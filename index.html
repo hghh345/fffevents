@@ -1,1 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>funfunfun.events</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Permanent+Marker&display=swap');
+    :root {
+      --sun: #ffd83d;
+      --orange: #ff7a1a;
+      --pink: #ff4fc3;
+      --blue: #3ec8ff;
+      --green: #59d66d;
+      --cream: #fff4cf;
+      --brown: #4b2a18;
+      --black: #15100c;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 79, 195, 0.55), transparent 26%),
+        radial-gradient(circle at 78% 8%, rgba(62, 200, 255, 0.65), transparent 24%),
+        radial-gradient(circle at 50% 88%, rgba(255, 122, 26, 0.55), transparent 28%),
+        linear-gradient(135deg, #fff4cf 0%, #ffe769 28%, #ffb45c 55%, #ff6fb7 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(45deg, #15100c 25%, transparent 25%),
+        linear-gradient(-45deg, #15100c 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #15100c 75%),
+        linear-gradient(-45deg, transparent 75%, #15100c 75%);
+      background-size: 42px 42px;
+      background-position: 0 0, 0 21px, 21px -21px, -21px 0px;
+      mix-blend-mode: soft-light;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      background: var(--black);
+      color: var(--sun);
+      border-bottom: 3px solid var(--cream);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding: 10px 0;
+      animation: scroll 18s linear infinite;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 20px 0 44px;
+      position: relative;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0 18px;
+    }
+
+    .logo {
+      font-size: clamp(2rem, 6vw, 5.5rem);
+      font-weight: 950;
+      line-height: 0.82;
+      letter-spacing: -0.08em;
+      text-shadow: 3px 3px 0 var(--pink), 6px 6px 0 var(--blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      background: rgba(255, 244, 207, 0.72);
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .hero {
+      min-height: 520px;
+      border: 3px solid var(--black);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.72), transparent 21%),
+        radial-gradient(circle at 50% 50%, rgba(255, 216, 61, 0.88), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 79, 195, 0.72), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(62, 200, 255, 0.62), transparent 60%),
+        linear-gradient(120deg, rgba(255,244,207,0.7), rgba(255,255,255,0.22));
+      box-shadow: 9px 9px 0 var(--black);
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 22px;
+      align-items: center;
+      padding: clamp(22px, 5vw, 54px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border: 3px dashed rgba(21, 16, 12, 0.45);
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 38s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero-copy,
+    .portal-card {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 14px;
+      transform: rotate(-2deg);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.5rem, 10vw, 9.2rem);
+      line-height: 0.76;
+      letter-spacing: -0.1em;
+      max-width: 720px;
+    }
+
+    .hero-copy p {
+      max-width: 600px;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      line-height: 1.35;
+      font-weight: 750;
+      margin: 24px 0 0;
+    }
+
+    .portal-card {
+      justify-self: center;
+      width: min(330px, 100%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 4px solid var(--black);
+      background:
+        radial-gradient(circle, #fff 0 11%, var(--sun) 12% 24%, var(--pink) 25% 39%, var(--blue) 40% 55%, var(--orange) 56% 71%, var(--green) 72% 100%);
+      box-shadow: 8px 8px 0 var(--black);
+      display: grid;
+      place-items: center;
+      animation: floaty 4s ease-in-out infinite;
+    }
+
+    .portal-face {
+      width: 64%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 3px solid var(--black);
+      overflow: hidden;
+      box-shadow: 5px 5px 0 var(--black);
+      transform: rotate(-4deg);
+      background: var(--sun);
+    }
+
+    .portal-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0) rotate(4deg); }
+      50% { transform: translateY(-12px) rotate(-3deg); }
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4rem);
+      letter-spacing: -0.07em;
+      line-height: 0.9;
+      text-shadow: 2px 2px 0 var(--cream);
+    }
+
+    .note {
+      max-width: 420px;
+      font-weight: 800;
+      line-height: 1.25;
+      background: rgba(255, 244, 207, 0.72);
+      border: 2px solid var(--black);
+      border-radius: 20px;
+      padding: 12px 14px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .event-card {
+      min-height: 170px;
+      border: 3px solid var(--black);
+      border-radius: 24px;
+      background: rgba(255, 244, 207, 0.78);
+      box-shadow: 5px 5px 0 var(--black);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card:hover {
+      transform: translate(-2px, -4px) rotate(-1deg);
+      box-shadow: 8px 9px 0 var(--black);
+    }
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      right: -24px;
+      top: -26px;
+      background: var(--accent, var(--pink));
+      opacity: 0.72;
+      border: 2px solid var(--black);
+    }
+
+    .event-card h3 {
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      font-size: 1.15rem;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 78%;
+    }
+
+    .event-card p {
+      margin: 18px 0 0;
+      position: relative;
+      z-index: 2;
+      line-height: 1.2;
+      font-weight: 730;
+      font-size: 0.88rem;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .poster {
+      border: 3px solid var(--black);
+      border-radius: 28px;
+      min-height: 330px;
+      background:
+        linear-gradient(90deg, rgba(21, 16, 12, 0.12) 50%, transparent 50%) 0 0 / 34px 34px,
+        linear-gradient(#ffc6e9, #ffd83d 48%, #3ec8ff);
+      box-shadow: 6px 6px 0 var(--black);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .poster-title {
+      font-family: 'Permanent Marker', 'Comic Neue', cursive;
+      font-size: clamp(3rem, 7vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      transform: rotate(-2deg);
+      text-shadow: 2px 2px 0 var(--cream), 5px 5px 0 var(--pink);
+    }
+
+    .info-panel {
+      border: 3px solid var(--black);
+      border-radius: 28px;
+      background: rgba(255, 244, 207, 0.84);
+      box-shadow: 6px 6px 0 var(--black);
+      padding: clamp(20px, 4vw, 34px);
+    }
+
+    .info-panel h2 {
+      margin-bottom: 12px;
+    }
+
+    .info-panel p {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      font-weight: 740;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: var(--sun);
+      box-shadow: 4px 4px 0 var(--black);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .game-section {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      align-items: stretch;
+      border: 3px solid var(--black);
+      border-radius: 30px;
+      background:
+        linear-gradient(45deg, rgba(62, 200, 255, 0.22) 25%, transparent 25%) 0 0 / 28px 28px,
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 0 14px / 28px 28px,
+        rgba(255, 244, 207, 0.78);
+      box-shadow: 7px 7px 0 var(--black);
+      padding: clamp(18px, 4vw, 34px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .game-section::before {
+      content: "disco dress up disco dress up disco dress up";
+      position: absolute;
+      left: -20px;
+      bottom: 16px;
+      font-weight: 950;
+      font-size: clamp(2rem, 6vw, 5rem);
+      line-height: 0.8;
+      letter-spacing: -0.08em;
+      color: rgba(21, 16, 12, 0.08);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .game-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .game-copy h2 {
+      max-width: 560px;
+    }
+
+    .game-copy p {
+      max-width: 560px;
+      font-size: 1.05rem;
+      line-height: 1.35;
+      font-weight: 740;
+    }
+
+    .denim-orb {
+      position: relative;
+      z-index: 2;
+      align-self: center;
+      justify-self: center;
+      width: min(280px, 75vw);
+      aspect-ratio: 1;
+      border: 4px solid var(--black);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,0.9), transparent 11%),
+        linear-gradient(90deg, rgba(255,255,255,0.22) 2px, transparent 2px) 0 0 / 24px 24px,
+        linear-gradient(rgba(21,16,12,0.14) 2px, transparent 2px) 0 0 / 24px 24px,
+        linear-gradient(135deg, #1f5fbf, #65b9ff 42%, #16356f 100%);
+      box-shadow: 8px 8px 0 var(--black);
+      animation: denimSpin 9s linear infinite;
+    }
+
+    .denim-orb::before {
+      content: "✦";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 6rem;
+      color: var(--sun);
+      text-shadow: 3px 3px 0 var(--black);
+    }
+
+    @keyframes denimSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    footer {
+      margin-top: 34px;
+      border: 3px solid var(--black);
+      border-radius: 28px;
+      background: var(--black);
+      color: var(--cream);
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+
+    footer strong {
+      color: var(--sun);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .feature,
+      .game-section {
+        grid-template-columns: 1fr;
+      }
+
+      .portal-card {
+        width: min(250px, 72vw);
+      }
+
+      .event-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header,
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee">
+    <span>are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦&nbsp;</span>
+    <span>are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦ are we having fun yet? ✦&nbsp;</span>
+  </div>
+
+  <main class="page">
+    <header>
+      <a class="logo" href="#">fun<br>fun<br>fun</a>
+      <nav>
+        <a href="#worlds">past worlds</a>
+        <a href="#next">next portal</a>
+        <a href="mailto:hello@funfunfun.events">email</a>
+        <a href="https://instagram.com/funfunfun.events">instagram</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">lisbon’s tiny portal to the unserious arts</div>
+        <h1>enter the funfunfun universe</h1>
+        <p>Part party, part performance, part social experiment. We make theme worlds for people who want to dress up, draw badly, dance strangely, meet cute strangers, and leave with a story.</p>
+      </div>
+      <div class="portal-card" aria-label="spinning smiley portal">
+        <div class="portal-face"><img src="smiley.jpg" alt="rainbow glitter smiley face"></div>
+      </div>
+    </section>
+
+    <section id="next" class="feature">
+      <div class="poster">
+        <div class="poster-title">bad art<br>& bellinis</div>
+      </div>
+      <div class="info-panel">
+        <h2>next portal opening</h2>
+        <p>A picnic for people who want to make something ugly, sip something cute, and stop pretending creativity has to be impressive.</p>
+        <p>Expect bad drawings, tiny prompts, bellini energy, snacks, strangers becoming friends, and absolutely no pressure to be good at art.</p>
+        <div class="button-row">
+          <a class="button" href="#">get tickets</a>
+          <a class="button" style="background: var(--pink);" href="mailto:hello@funfunfun.events">collab?</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="denim-game" class="game-section">
+      <div class="game-copy">
+        <div class="eyebrow">still accepting denim disciples</div>
+        <h2>play the denim disco dress up game</h2>
+        <p>Enter the tiny denim portal and style your way through the disco. It is part outfit game, part party archive, part proof that jeans can be a spiritual practice.</p>
+        <div class="button-row">
+          <a class="button" href="https://denimdisco.fun">play the game</a>
+          <a class="button" style="background: var(--blue);" href="#worlds">see the world</a>
+        </div>
+      </div>
+      <div class="denim-orb" aria-label="spinning denim disco ball"></div>
+    </section>
+
+    <section id="worlds">
+      <div class="section-heading">
+        <h2>worlds you may have missed</h2>
+        <div class="note">Every funfunfun event is its own little universe: a theme, a dress code, a joke, a ritual, a reason to leave the house.</div>
+      </div>
+
+      <div class="event-grid">
+        <article class="event-card" style="--accent:#3ec8ff">
+          <h3>night of 1000 beyoncés</h3>
+          <p>A devotional dancefloor for divas, cowgirls, fan clacks, and main-character entrances.</p>
+        </article>
+        <article class="event-card" style="--accent:#ff4fc3">
+          <h3>denim disco</h3>
+          <p>Canadian tuxedos, disco shine, no-sew styling chaos, and a dancefloor full of jean dreams.</p>
+        </article>
+        <article class="event-card" style="--accent:#59d66d">
+          <h3>sushi, sound & soul</h3>
+          <p>A softer gathering with food, music, and just enough woo to open the room.</p>
+        </article>
+        <article class="event-card" style="--accent:#ff7a1a">
+          <h3>club cowboy</h3>
+          <p>Western fantasy with dancefloor drama, rhinestone spirit, and yeehaw-adjacent behavior.</p>
+        </article>
+        <article class="event-card" style="--accent:#ffd83d">
+          <h3>jingle & mingle</h3>
+          <p>A festive little mixer for holiday flirting, chaotic outfits, and seasonal sparkle.</p>
+        </article>
+        <article class="event-card" style="--accent:#b98cff">
+          <h3>smoke & scribble</h3>
+          <p>A low-pressure creative hang for doodles, prompts, stories, and strange little truths.</p>
+        </article>
+        <article class="event-card" style="--accent:#ffc6e9">
+          <h3>cake picnic</h3>
+          <p>A sweet outdoor moment for frosting, blankets, cute plates, and soft chaos.</p>
+        </article>
+        <article class="event-card" style="--accent:#ffffff">
+          <h3>1-800-bukkake</h3>
+          <p>A hotline to the weird, glamorous, unserious side of nightlife.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>funfunfun.events</strong><br>parties, portals, tiny worlds, big feelings.</div>
+      <div>hello@funfunfun.events</div>
+    </footer>
+  </main>
+</body>
+</html>
