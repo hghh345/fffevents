@@ -469,9 +469,129 @@ transform:translateY(-12px);
 
 @media (max-width:768px){
 
+html,body{
+overflow:auto;
+overflow-x:hidden;
+}
+
 #scene{
-    transform:scale(.72);
-    transform-origin:top center;
+position:relative;
+width:100%;
+height:100vh;
+}
+
+/* Paper */
+
+#paper{
+
+width:88vw;
+padding:35px 25px;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%) rotate(-2deg);
+
+z-index:50;
+
+}
+
+h1{
+font-size:2.8rem;
+}
+
+h2{
+font-size:1.6rem;
+}
+
+#paper p{
+font-size:1.2rem;
+}
+
+/* Bigger tap targets */
+
+.object{
+padding:10px;
+}
+
+.object span{
+font-size:60px;
+}
+
+.object small{
+font-size:16px;
+white-space:normal;
+text-align:center;
+max-width:90px;
+}
+
+/* Playground Layout */
+
+#sun{
+top:40px;
+right:20px;
+font-size:80px;
+}
+
+#kite{
+top:70px;
+left:50%;
+transform:translateX(-50%);
+font-size:60px;
+}
+
+#rules{
+top:30px;
+left:-60px;
+font-size:70px;
+}
+
+#cloud2{
+top:100px;
+left:-180px;
+font-size:60px;
+}
+
+#story{
+left:20px;
+bottom:170px;
+font-size:120px;
+}
+
+#permission{
+right:15px;
+left:auto;
+bottom:170px;
+font-size:110px;
+}
+
+#pack{
+left:15px;
+right:auto;
+bottom:20px;
+}
+
+#might{
+left:50%;
+bottom:30px;
+transform:translateX(-50%);
+}
+
+#who{
+right:20px;
+bottom:310px;
+}
+
+#what{
+right:15px;
+left:auto;
+bottom:430px;
+transform:none;
+}
+
+#nope{
+right:20px;
+bottom:80px;
 }
 
 }
