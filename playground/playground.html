@@ -275,6 +275,19 @@ transform:translateX(-50%);
 font-size:60px;
 
 }
+#confetti{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:998;
+}
+
 #sun{
 
 position:absolute;
@@ -553,6 +566,10 @@ Keep Exploring →
 </div>
 
 </div>
+<!-- CONFETTI -->
+
+<div id="confetti"></div>
+
 
 <script>
 
@@ -567,7 +584,41 @@ function openCard(cardTitle, cardText){
     popup.style.display = "flex";
 
 }
+function explode(){
 
+const emojis=["🎉","✨","⭐","🎈","🎟️","🎊"];
+
+for(let i=0;i<70;i++){
+
+const piece=document.createElement("div");
+
+piece.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+piece.style.position="absolute";
+
+piece.style.left=Math.random()*100+"vw";
+
+piece.style.top="-50px";
+
+piece.style.fontSize=(20+Math.random()*30)+"px";
+
+piece.style.transition="2s linear";
+
+document.getElementById("confetti").appendChild(piece);
+
+setTimeout(()=>{
+
+piece.style.transform=
+`translateY(${window.innerHeight+100}px)
+rotate(${Math.random()*720}deg)`;
+
+},20);
+
+setTimeout(()=>piece.remove(),2200);
+
+}
+
+}
 document.getElementById("closeButton").onclick = () => {
 
     popup.style.display = "none";
