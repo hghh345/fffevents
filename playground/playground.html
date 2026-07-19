@@ -124,19 +124,52 @@ opacity:.7;
 
 position:absolute;
 
-font-size:70px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+gap:6px;
 
 cursor:pointer;
 
 transition:.25s;
 
+text-align:center;
+
 user-select:none;
 
 }
 
-.object:hover{
+.object span{
 
-transform:scale(1.15) rotate(-6deg);
+font-size:70px;
+
+transition:.25s;
+
+}
+
+.object:hover span{
+
+transform:scale(1.15) rotate(-8deg);
+
+}
+
+.object small{
+
+font-family:'Patrick Hand',cursive;
+
+font-size:18px;
+
+background:rgba(255,255,255,.82);
+
+padding:5px 14px;
+
+border-radius:999px;
+
+box-shadow:0 6px 16px rgba(0,0,0,.18);
+
+white-space:nowrap;
 
 }
 
@@ -528,25 +561,60 @@ Click around the playground to explore.
 
 <!-- OBJECTS -->
 
-<div class="object" id="rules">☁️</div>
+<!-- OBJECTS -->
 
-<div class="object" id="cloud2">☁️</div>
+<div class="object" id="rules">
+    <span>☁️</span>
+    <small>Camp Rules</small>
+</div>
 
-<div class="object" id="story">🌳</div>
-<div class="object" id="sun">☀️</div>
-<div class="object" id="kite">🪁</div>
+<div class="object" id="cloud2">
+    <span>☁️</span>
+</div>
 
-<div class="object" id="permission">📄</div>
+<div class="object" id="story">
+    <span>🌳</span>
+    <small>Why?</small>
+</div>
 
-<div class="object" id="what">🪜</div>
+<div class="object" id="sun">
+    <span>☀️</span>
+</div>
 
-<div class="object" id="who">🧃</div>
+<div class="object" id="kite">
+    <span>🪁</span>
+    <small>Save the Date</small>
+</div>
 
-<div class="object" id="pack">🎒</div>
+<div class="object" id="permission">
+    <span>🛝</span>
+    <small>Permission Slip</small>
+</div>
 
-<div class="object" id="nope">🚮</div>
+<div class="object" id="what">
+    <span>🪜</span>
+    <small>How it Works</small>
+</div>
 
-<div class="object" id="might">🌼 🌸 🌻 🌷</div>
+<div class="object" id="who">
+    <span>🧃</span>
+    <small>Who's This For?</small>
+</div>
+
+<div class="object" id="pack">
+    <span>🎒</span>
+    <small>Packing List</small>
+</div>
+
+<div class="object" id="nope">
+    <span>🚮</span>
+    <small>Definitely Not</small>
+</div>
+
+<div class="object" id="might">
+    <span>🌼🌸🌻</span>
+    <small>What Might Happen</small>
+</div>
 
 <!-- POPUP -->
 
