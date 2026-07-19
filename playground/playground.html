@@ -24,7 +24,6 @@ font-family:'Patrick Hand',cursive;
 
 body{
 
-/* REPLACE THIS WITH YOUR PLAYGROUND PHOTO */
 
 background-image:
 linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
@@ -144,24 +143,54 @@ transform:scale(1.15) rotate(-6deg);
 #rules{
 
 top:50px;
-
-left:120px;
+left:-150px;
 
 font-size:90px;
 
-animation:float 18s ease-in-out infinite;
+animation:cloudOne 35s linear infinite;
 
 }
 
 #cloud2{
 
-top:110px;
+top:120px;
+left:-400px;
 
-right:120px;
+font-size:70px;
 
-font-size:80px;
+animation:cloudTwo 55s linear infinite;
 
-animation:float 15s ease-in-out infinite reverse;
+}
+
+@keyframes cloudOne{
+
+from{
+
+left:-200px;
+
+}
+
+to{
+
+left:110%;
+
+}
+
+}
+
+@keyframes cloudTwo{
+
+from{
+
+left:-500px;
+
+}
+
+to{
+
+left:110%;
+
+}
 
 }
 
@@ -242,6 +271,57 @@ bottom:20px;
 transform:translateX(-50%);
 
 font-size:60px;
+
+}
+#sun{
+
+position:absolute;
+
+top:40px;
+right:60px;
+
+font-size:110px;
+
+animation:spin 35s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+#kite{
+
+position:absolute;
+
+top:70px;
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:70px;
+
+animation:kiteFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes kiteFloat{
+
+50%{
+
+transform:
+translateX(-50%)
+translateY(-20px)
+rotate(-8deg);
+
+}
 
 }
 
@@ -437,6 +517,8 @@ Click around the playground to explore.
 <div class="object" id="cloud2">☁️</div>
 
 <div class="object" id="story">🌳</div>
+<div class="object" id="sun">☀️</div>
+<div class="object" id="kite">🪁</div>
 
 <div class="object" id="permission">📄</div>
 
@@ -570,15 +652,19 @@ It's recess.`
 WHAT IS THIS?
 ---------------------------- */
 
-document.getElementById("what").onclick = ()=>{
+document.getElementById("what").onclick=()=>{
+
+explode();
 
 openCard(
 
-"🪜 What Is This?",
+"🎟️ Tickets Unlocked!",
 
-`Imagine if a scavenger hunt...
+`Imagine if...
 
-met a summer camp...
+a scavenger hunt...
+
+met summer camp...
 
 met your favourite field trip...
 
@@ -588,13 +674,7 @@ You'll be placed on a team with a handful of strangers.
 
 You'll complete playful missions around Lisbon.
 
-Talk to people you would've otherwise walked past.
-
-Take ridiculous photos.
-
-Discover hidden corners of the city.
-
-And probably laugh more than you expected.`
+Tickets coming soon ✨`
 
 );
 
@@ -728,6 +808,25 @@ Curiosity.`
 );
 
 }
+
+document.getElementById("kite").onclick=()=>{
+
+openCard(
+
+"🪁 Save the Date",
+
+`Saturday, August 23
+
+Lisbon
+
+Adventure begins soon.
+
+Tickets will be released here.`
+
+);
+
+}
+
 
 </script>
 </body>
