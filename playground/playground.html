@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Super FunFunFun Scavenger Hunt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
+overflow:hidden;
+font-family:'Patrick Hand',cursive;
+}
+
+body{
+
+/* REPLACE THIS WITH YOUR PLAYGROUND PHOTO */
+
+background-image:
+linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
+url("playground.jpg");
+
+background-size:cover;
+background-position:center;
+
+}
+
+/* ---------- CENTER PAPER ---------- */
+
+#paper{
+
+position:absolute;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%) rotate(-2deg);
+
+width:min(650px,90vw);
+
+background:#fffdf5;
+
+padding:50px;
+
+border-radius:8px;
+
+box-shadow:
+0 25px 50px rgba(0,0,0,.25);
+
+z-index:50;
+
+}
+
+#paper:before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(circle at top left,#ffffff,transparent 40%),
+radial-gradient(circle at bottom right,#ece5cf,transparent 45%);
+
+mix-blend-mode:multiply;
+
+opacity:.5;
+
+pointer-events:none;
+
+}
+
+h1{
+
+font-family:'Schoolbell',cursive;
+
+font-size:3.5rem;
+
+line-height:.95;
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+h2{
+
+text-align:center;
+
+font-size:2rem;
+
+font-weight:normal;
+
+margin-bottom:20px;
+
+}
+
+#paper p{
+
+text-align:center;
+
+font-size:1.35rem;
+
+opacity:.7;
+
+}
+
+/* ---------- PLAYGROUND OBJECTS ---------- */
+
+.object{
+
+position:absolute;
+
+font-size:70px;
+
+cursor:pointer;
+
+transition:.25s;
+
+user-select:none;
+
+}
+
+.object:hover{
+
+transform:scale(1.15) rotate(-6deg);
+
+}
+
+/* clouds */
+
+#rules{
+
+top:50px;
+
+left:120px;
+
+font-size:90px;
+
+animation:float 18s ease-in-out infinite;
+
+}
+
+#cloud2{
+
+top:110px;
+
+right:120px;
+
+font-size:80px;
+
+animation:float 15s ease-in-out infinite reverse;
+
+}
+
+/* tree */
+
+#story{
+
+left:60px;
+
+bottom:120px;
+
+font-size:170px;
+
+}
+
+/* slide */
+
+#permission{
+
+left:300px;
+
+bottom:80px;
+
+font-size:140px;
+
+}
+
+/* monkey bars */
+
+#what{
+
+left:48%;
+
+bottom:170px;
+
+transform:translateX(-50%);
+
+}
+
+/* backpack */
+
+#pack{
+
+right:300px;
+
+bottom:80px;
+
+}
+
+/* trash */
+
+#nope{
+
+right:170px;
+
+bottom:90px;
+
+}
+
+/* juice */
+
+#who{
+
+right:420px;
+
+bottom:220px;
+
+}
+
+/* flowers */
+
+#might{
+
+left:50%;
+
+bottom:20px;
+
+transform:translateX(-50%);
+
+font-size:60px;
+
+}
+
+/* ---------- POPUP ---------- */
+
+#popup{
+
+position:fixed;
+
+inset:0;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+z-index:999;
+
+}
+
+#card{
+
+background:white;
+
+width:min(700px,92vw);
+
+max-height:80vh;
+
+overflow:auto;
+
+padding:45px;
+
+border-radius:14px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+transform:rotate(-1deg);
+
+}
+
+#card h3{
+
+font-family:'Schoolbell',cursive;
+
+font-size:2.2rem;
+
+margin-bottom:20px;
+
+}
+
+#card p{
+
+font-size:1.4rem;
+
+line-height:1.6;
+
+white-space:pre-line;
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:14px 28px;
+
+font-size:1.1rem;
+
+border:none;
+
+border-radius:999px;
+
+cursor:pointer;
+
+background:#ffd95c;
+
+}
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:768px){
+
+#paper{
+
+width:92vw;
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:2.2rem;
+
+}
+
+h2{
+
+font-size:1.3rem;
+
+}
+
+.object{
+
+font-size:50px;
+
+}
+
+#story{
+
+font-size:110px;
+
+left:10px;
+
+}
+
+#permission{
+
+left:120px;
+
+}
+
+#pack{
+
+right:100px;
+
+}
+
+#nope{
+
+right:20px;
+
+}
+
+#who{
+
+right:160px;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- CENTER -->
+
+<div id="paper">
+
+<h1>
+
+The Super<br>
+FunFunFun<br>
+Scavenger Hunt
+
+</h1>
+
+<h2>
+
+for Curious Adults
+
+</h2>
+
+<p>
+
+Click around the playground to explore.
+
+</p>
+
+</div>
+
+<!-- OBJECTS -->
+
+<div class="object" id="rules">☁️</div>
+
+<div class="object" id="cloud2">☁️</div>
+
+<div class="object" id="story">🌳</div>
+
+<div class="object" id="permission">🛝</div>
+
+<div class="object" id="what">🪜</div>
+
+<div class="object" id="who">🧃</div>
+
+<div class="object" id="pack">🎒</div>
+
+<div class="object" id="nope">🚮</div>
+
+<div class="object" id="might">🌼 🌸 🌻 🌷</div>
+
+<!-- POPUP -->
+
+<div id="popup">
+
+<div id="card">
+
+<h3 id="popupTitle"></h3>
+
+<p id="popupText"></p>
+
+<button id="closeButton">
+
+Keep Exploring →
+
+</button>
+
+</div>
+
+</div>
+
+<!-- JavaScript goes here in Part 2 -->
+
+</body>
+</html>
