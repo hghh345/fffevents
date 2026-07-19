@@ -467,64 +467,146 @@ transform:translateY(-12px);
 
 /* ---------- MOBILE ---------- */
 
-@media(max-width:768px){
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+html,
+body{
+    overflow:auto;
+    overflow-x:hidden;
+}
+
+body{
+    min-height:1400px;
+}
 
 #paper{
 
-width:92vw;
+    position:relative;
 
-padding:30px;
+    top:40px;
+    left:50%;
+
+    transform:translateX(-50%) rotate(-1deg);
+
+    width:90%;
+
+    padding:28px;
 
 }
 
 h1{
-
-font-size:2.2rem;
-
+    font-size:2.3rem;
 }
 
 h2{
-
-font-size:1.3rem;
-
+    font-size:1.3rem;
 }
 
+#paper p{
+    font-size:1rem;
+}
+
+/* Objects */
+
 .object{
+    position:absolute;
+}
 
-font-size:50px;
+.object span{
+    font-size:60px;
+}
 
+.object small{
+    font-size:16px;
+}
+
+/* Position everything in a loose grid */
+
+#rules{
+    top:240px;
+    left:10%;
+}
+
+#cloud2{
+    top:170px;
+    right:10%;
+    left:auto;
+}
+
+#sun{
+    top:20px;
+    right:20px;
+}
+
+#kite{
+    top:170px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
 #story{
-
-font-size:110px;
-
-left:10px;
-
+    top:420px;
+    left:8%;
+    bottom:auto;
 }
 
 #permission{
-
-left:120px;
-
+    top:430px;
+    right:8%;
+    left:auto;
+    bottom:auto;
 }
 
-#pack{
-
-right:100px;
-
-}
-
-#nope{
-
-right:20px;
-
+#what{
+    top:650px;
+    left:50%;
+    bottom:auto;
+    transform:translateX(-50%);
 }
 
 #who{
+    top:850px;
+    left:10%;
+    right:auto;
+    bottom:auto;
+}
 
-right:160px;
+#pack{
+    top:850px;
+    right:10%;
+    bottom:auto;
+}
 
+#nope{
+    top:1080px;
+    left:10%;
+    right:auto;
+    bottom:auto;
+}
+
+#might{
+    top:1080px;
+    right:10%;
+    left:auto;
+    bottom:auto;
+    transform:none;
+}
+
+/* Popup */
+
+#card{
+    width:92%;
+    padding:28px;
+}
+
+#card h3{
+    font-size:1.8rem;
+}
+
+#card p{
+    font-size:1.15rem;
 }
 
 }
