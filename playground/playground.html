@@ -470,7 +470,265 @@ Keep Exploring →
 
 </div>
 
-<!-- JavaScript goes here in Part 2 -->
+<script>
 
+const popup = document.getElementById("popup");
+const title = document.getElementById("popupTitle");
+const text = document.getElementById("popupText");
+
+function openCard(cardTitle, cardText){
+
+    title.innerHTML = cardTitle;
+    text.innerHTML = cardText;
+    popup.style.display = "flex";
+
+}
+
+document.getElementById("closeButton").onclick = () => {
+
+    popup.style.display = "none";
+
+}
+
+popup.onclick = (e)=>{
+
+    if(e.target === popup){
+
+        popup.style.display="none";
+
+    }
+
+}
+
+/* ----------------------------
+PERMISSION TO PLAY
+---------------------------- */
+
+document.getElementById("permission").onclick = ()=>{
+
+openCard(
+
+"📜 Permission to Play",
+
+`Valid for:
+
+One afternoon.
+
+Approved activities:
+
+☑ Cartwheels
+
+☑ Talking to strangers
+
+☑ Dancing in public
+
+☑ Laughing too loudly
+
+☑ Frolicking
+
+Signed,
+
+FunFunFun`
+
+);
+
+}
+
+/* ----------------------------
+TREE
+---------------------------- */
+
+document.getElementById("story").onclick = ()=>{
+
+openCard(
+
+"🌳 Somewhere Along the Way...",
+
+`Somewhere along the way...
+
+We got really good at being adults.
+
+We optimise.
+
+We schedule.
+
+We multitask.
+
+We count our protein.
+
+But we forgot how to play.
+
+This isn't self-help.
+
+It's recess.`
+
+);
+
+}
+
+/* ----------------------------
+WHAT IS THIS?
+---------------------------- */
+
+document.getElementById("what").onclick = ()=>{
+
+openCard(
+
+"🪜 What Is This?",
+
+`Imagine if a scavenger hunt...
+
+met a summer camp...
+
+met your favourite field trip...
+
+met a social experiment.
+
+You'll be placed on a team with a handful of strangers.
+
+You'll complete playful missions around Lisbon.
+
+Talk to people you would've otherwise walked past.
+
+Take ridiculous photos.
+
+Discover hidden corners of the city.
+
+And probably laugh more than you expected.`
+
+);
+
+}
+
+/* ----------------------------
+WHO IS THIS FOR?
+---------------------------- */
+
+document.getElementById("who").onclick = ()=>{
+
+openCard(
+
+"🧃 Who Is This For?",
+
+`People who miss recess.
+
+People who are new to Lisbon.
+
+People who want stories instead of small talk.
+
+People who like saying yes.
+
+People who want to meet new people without awkward networking.
+
+People who miss being eight years old.`
+
+);
+
+}
+
+/* ----------------------------
+RULES
+---------------------------- */
+
+document.getElementById("rules").onclick = ()=>{
+
+openCard(
+
+"☁️ Rules",
+
+`🌼 Be curious.
+
+🌼 Be kind.
+
+🌼 Play wholeheartedly.
+
+🌼 Leave Lisbon better than you found it.
+
+🌼 The only way to lose is worrying about looking cool.`
+
+);
+
+}
+
+document.getElementById("cloud2").onclick = document.getElementById("rules").onclick;
+
+/* ----------------------------
+WHAT MIGHT HAPPEN
+---------------------------- */
+
+document.getElementById("might").onclick = ()=>{
+
+openCard(
+
+"🌼 Things That Might Happen",
+
+`✔ Invent a team handshake.
+
+✔ Learn someone's favourite song.
+
+✔ Draw with chalk.
+
+✔ Skip down a street.
+
+✔ Become best friends with a stranger.
+
+✔ Find your new favourite café.
+
+✔ Remember what it feels like to be eight years old.`
+
+);
+
+}
+
+/* ----------------------------
+WHAT WON'T HAPPEN
+---------------------------- */
+
+document.getElementById("nope").onclick = ()=>{
+
+openCard(
+
+"🚫 Things That Won't Happen",
+
+`❌ Awkward networking.
+
+❌ PowerPoint presentations.
+
+❌ Forced introductions.
+
+❌ Name tags with "fun facts."
+
+❌ Icebreaker bingo.
+
+❌ Corporate vibes.`
+
+);
+
+}
+
+/* ----------------------------
+PACKING LIST
+---------------------------- */
+
+document.getElementById("pack").onclick = ()=>{
+
+openCard(
+
+"🎒 What to Pack",
+
+`Comfortable shoes.
+
+Water.
+
+A fully charged phone
+(for photos, not scrolling.)
+
+Curiosity.`
+
+);
+
+}
+
+</script>
 </body>
 </html>
