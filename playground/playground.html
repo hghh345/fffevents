@@ -727,6 +727,13 @@ function openCard(cardTitle, cardText){
     text.innerHTML = cardText;
     popup.style.display = "flex";
 
+    // Reset the button every time a popup opens
+    document.getElementById("closeButton").innerHTML = "Keep Exploring →";
+
+    document.getElementById("closeButton").onclick = () => {
+        popup.style.display = "none";
+    };
+
 }
 function explode(){
 
