@@ -846,20 +846,24 @@ openCard(
 
 "🎟️ Tickets Unlocked!",
 
-`Imagine if...
-a scavenger hunt...
-met summer camp...
-met your favourite field trip...
-met a social experiment.
-You'll be placed on a team with a handful of beautiful strangers.
-You'll complete playful missions around Lisbon.
+`Congratulations!
 
-Tickets coming soon ✨`
+You found the secret ticket booth.
+
+Camp FunFunFun is waiting...
+
+👇 Click below to reserve your spot.`
 
 );
 
-}
+document.getElementById("closeButton").innerHTML="Get Tickets →";
 
+document.getElementById("closeButton").onclick=()=>{
+
+window.open(
+"https://buy.stripe.com/5kQ3cu7UEgel8UAaFi5gc0j",
+"_blank"
+);
 /* ----------------------------
 WHO IS THIS FOR?
 ---------------------------- */
