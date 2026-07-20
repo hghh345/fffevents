@@ -837,15 +837,20 @@ But we forgot how to play.`
 /* ----------------------------
 WHAT IS THIS?
 ---------------------------- */
+<<<<<<< HEAD
+
+document.getElementById("what").onclick = () => {
+=======
 document.getElementById("what").onclick=()=>{
+>>>>>>> f79db62b564276baf97911a4807f8786f31a9900
 
-explode();
+    explode();
 
-openCard(
+    openCard(
 
-"🎟️ Tickets Unlocked!",
+        "🎟️ Tickets Unlocked!",
 
-`Congratulations!
+        `Congratulations!
 
 You found the secret ticket booth.
 
@@ -853,20 +858,22 @@ Camp FunFunFun is waiting...
 
 👇 Click below to reserve your spot.`
 
-);
+    );
 
-document.getElementById("closeButton").innerHTML="Get Tickets →";
+    document.getElementById("closeButton").innerHTML = "Get Tickets →";
 
-document.getElementById("closeButton").onclick=()=>{
+    document.getElementById("closeButton").onclick = () => {
 
-window.open(
-"https://YOUR-TICKET-LINK",
-"_blank"
-);
+<<<<<<< HEAD
+        window.open(
+            "https://buy.stripe.com/5kQ3cu7UEgel8UAaFi5gc0j",
+            "_blank"
+        );
 
-}
+    };
 
-}
+};
+
 /* ----------------------------
 WHO IS THIS FOR?
 ---------------------------- */
