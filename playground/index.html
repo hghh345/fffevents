@@ -526,7 +526,32 @@ max-width:90px;
 }
 
 /* Playground Layout */
+#homeSign{
+    position:absolute;
+    top:20px;
+    left:20px;
 
+    background:#d2a679;
+    color:#3d2a1b;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    font-family:'Patrick Hand',cursive;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+
+    transform:rotate(-3deg);
+}
+
+#homeSign:hover{
+    transform:rotate(0deg) scale(1.05);
+}
 #sun{
 top:40px;
 right:20px;
@@ -689,6 +714,10 @@ Click around the playground to explore.
 <div class="object" id="might">
     <span>🌼🌸🌻</span>
     <small>What Might Happen</small>
+</div>
+
+<div id="homeSign">
+    ← FunFunFun HQ
 </div>
 
 <!-- POPUP -->
@@ -1039,6 +1068,9 @@ Chance of adulthood:
 );
 
 }
+document.getElementById("homeSign").onclick = () => {
+    window.location.href = "https://funfunfun.events";
+};
 
 
 </script>
