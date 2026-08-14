@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Inner Playground | FunFunFun</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#000;
+    line-height:1.6;
+}
+
+.container{
+    max-width:700px;
+    margin:0 auto;
+    padding:60px 24px 80px;
+}
+
+p,
+li,
+a{
+    font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
+    font-size:1.05rem;
+}
+
+h1{
+    font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
+    font-size:5rem;
+    font-weight:700;
+    line-height:.88;
+    letter-spacing:-3px;
+    text-transform:lowercase;
+    margin-bottom:18px;
+}
+
+h2{
+    font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
+    font-size:1.7rem;
+    font-weight:700;
+    line-height:1;
+    text-transform:lowercase;
+    margin-bottom:25px;
+}
+
+.subtitle{
+    font-size:1.4rem;
+    line-height:1.2;
+    margin-bottom:40px;
+}
+
+.back-button{
+    display:inline-block;
+    margin-bottom:50px;
+    color:#000;
+    text-decoration:none;
+    font-size:.95rem;
+}
+
+.back-button:hover{
+    text-decoration:underline;
+}
+
+
+/* HERO */
+
+.hero{
+    margin-bottom:55px;
+}
+
+.hero p{
+    max-width:500px;
+}
+
+
+/* SLIDESHOW */
+
+.slideshow{
+    width:100%;
+    aspect-ratio:1 / 1;
+    position:relative;
+    overflow:hidden;
+    margin:40px 0 65px;
+    background:#fff;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity .15s linear;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+
+/* PRODUCT INFO */
+
+.product-intro{
+    margin-bottom:45px;
+}
+
+.product-stats{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    margin:40px 0 60px;
+}
+
+.stat{
+    padding:22px 10px;
+    text-align:center;
+}
+
+.stat + .stat{
+    border-left:2px solid #000;
+}
+
+.stat-number{
+    display:block;
+    font-size:1.7rem;
+    font-weight:bold;
+    line-height:1;
+    margin-bottom:7px;
+}
+
+.stat-label{
+    font-size:.9rem;
+}
+
+
+/* BUTTON */
+
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:16px 34px;
+    border:2px solid #000;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.button:hover{
+    background:#000;
+    color:#fff;
+}
+
+
+/* DIVIDERS */
+
+hr{
+    border:none;
+    border-top:2px solid #000;
+    margin:70px 0;
+}
+
+
+/* WAYS TO PLAY */
+
+.play-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border-top:2px solid #000;
+    margin-top:35px;
+}
+
+.play-item{
+    padding:22px 10px 22px 0;
+    border-bottom:2px solid #000;
+}
+
+.play-item:nth-child(even){
+    padding-left:20px;
+    border-left:2px solid #000;
+}
+
+.play-title{
+    font-weight:bold;
+    font-size:1.1rem;
+    margin-bottom:5px;
+}
+
+.play-description{
+    font-size:.95rem;
+    line-height:1.4;
+}
+
+
+/* SPECIAL PLAY MODES */
+
+.special{
+    margin-top:45px;
+}
+
+.special-item{
+    margin-bottom:35px;
+}
+
+.special-title{
+    font-weight:bold;
+    font-size:1.15rem;
+    margin-bottom:5px;
+}
+
+
+/* EVENTS */
+
+.event-box{
+    border:2px solid #000;
+    padding:30px;
+    margin-top:25px;
+}
+
+
+/* SMALL TEXT */
+
+.small{
+    font-size:.9rem;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:90px;
+}
+
+.footer p{
+    font-size:.9rem;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .container{
+        padding:45px 20px 70px;
+    }
+
+    h1{
+        font-size:3.4rem;
+        letter-spacing:-2px;
+    }
+
+    .subtitle{
+        font-size:1.2rem;
+    }
+
+    .product-stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat:nth-child(3){
+        grid-column:1 / -1;
+        border-left:none;
+        border-top:2px solid #000;
+    }
+
+    .play-grid{
+        grid-template-columns:1fr;
+    }
+
+    .play-item:nth-child(even){
+        padding-left:0;
+        border-left:none;
+    }
+
+    .slideshow{
+        margin-top:30px;
+        margin-bottom:50px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <a href="https://funfunfun.events" class="back-button">
+        ← back to funfunfun
+    </a>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            inner<br>
+            playground
+        </h1>
+
+        <p class="subtitle">
+            small prompts. big adventures.
+        </p>
+
+        <p>
+            A little card game for curious adults.
+        </p>
+
+    </section>
+
+
+    <!-- FAST SLIDESHOW -->
+
+    <div class="slideshow" aria-label="Inner Playground cards">
+
+        <img
+            src="1.png"
+            alt="Inner Playground card"
+            class="slide active"
+        >
+
+        <img
+            src="2.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+        <img
+            src="inner-playground-03.jpg"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+        <img
+            src="3.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+        <img
+            src="4.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+        <img
+            src="5.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+        <img
+            src="6.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+         <img
+            src="7.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+         <img
+            src="8.png"
+            alt="Inner Playground card"
+            class="slide"
+        >
+
+    </div>
+
+
+    <!-- INTRO -->
+
+    <section class="product-intro">
+
+        <h2>
+            welcome to inner playground.
+        </h2>
+
+        <p>
+            The only rule? Be curious.
+        </p>
+
+        <br>
+
+        <p>
+            There are no right answers here.
+        </p>
+
+        <br>
+
+        <p>
+            Every card is an invitation to notice, imagine, create, or connect.
+        </p>
+
+        <br>
+
+        <p>
+            Some questions will make you laugh.
+            Some might surprise you.
+            Some might stay with you long after you've put the cards away.
+        </p>
+
+    </section>
+
+
+    <!-- PRODUCT DETAILS -->
+
+    <div class="product-stats">
+
+        <div class="stat">
+            <span class="stat-number">34</span>
+            <span class="stat-label">prompt cards</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-number">2</span>
+            <span class="stat-label">instruction cards</span>
+        </div>
+
+        <div class="stat">
+            <span class="stat-number">1</span>
+            <span class="stat-label">little bag</span>
+        </div>
+
+    </div>
+
+
+    <!-- WAYS TO PLAY -->
+
+    <hr>
+
+    <section>
+
+        <h2>
+            ways to play
+        </h2>
+
+        <p>
+            Play alone or play together. Choose a card, then choose how you want to respond.
+        </p>
+
+
+        <div class="play-grid">
+
+            <div class="play-item">
+                <div class="play-title">tell a story</div>
+                <div class="play-description">
+                    Turn the prompt into a story.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">draw it</div>
+                <div class="play-description">
+                    Draw whatever comes to mind.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">use only three words</div>
+                <div class="play-description">
+                    Three words. That's it.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">write it</div>
+                <div class="play-description">
+                    One sentence each.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">time it</div>
+                <div class="play-description">
+                    Make everyone respond in under 60 seconds.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">answer as your 8-year-old self</div>
+                <div class="play-description">
+                    Let your younger self answer.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">answer as your future self</div>
+                <div class="play-description">
+                    Answer from somewhere in the future.
+                </div>
+            </div>
+
+
+            <div class="play-item">
+                <div class="play-title">combine them</div>
+                <div class="play-description">
+                    Make up your own combination.
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="special">
+
+            <div class="special-item">
+
+                <div class="special-title">
+                    cambio
+                </div>
+
+                <p>
+                    Change one or more words in the question to make up a new one.
+                </p>
+
+            </div>
+
+
+            <div class="special-item">
+
+                <div class="special-title">
+                    wildcard
+                </div>
+
+                <p>
+                    Make up your own way to play.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BUY -->
+
+    <hr>
+
+    <section>
+
+        <h2>
+            take the playground home.
+        </h2>
+
+        <p>
+            34 prompts for noticing, imagining, creating, connecting,
+            and getting out of your own head for a little while.
+        </p>
+
+        <a href="#" class="button">
+            buy inner playground
+        </a>
+
+        <p class="small" style="margin-top:18px;">
+            link coming soon
+        </p>
+
+    </section>
+
+
+    <!-- EVENTS -->
+
+    <hr>
+
+    <section>
+
+        <h2>
+            play in person.
+        </h2>
+
+        <p>
+            Inner Playground also comes out to play at FunFunFun events.
+        </p>
+
+        <div class="event-box">
+
+            <p>
+                Want to meet some curious people and play together?
+            </p>
+
+            <a
+                href="https://funfunfun.events"
+                class="button"
+            >
+                see upcoming events
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLOSING -->
+
+    <hr>
+
+    <section>
+
+        <h2>
+            one more thing...
+        </h2>
+
+        <p>
+            You don't have to be creative.
+        </p>
+
+        <br>
+
+        <p>
+            You don't have to be good at drawing.
+        </p>
+
+        <br>
+
+        <p>
+            You don't have to have an interesting answer.
+        </p>
+
+        <br>
+
+        <p>
+            Just be curious.
+        </p>
+
+    </section>
+
+
+    <div class="footer">
+
+        <p>
+            @funfunfun.events
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* 
+   FAST INNER PLAYGROUND SLIDESHOW
+   Change the number below to make it
+   faster or slower.
+*/
+
+const slides = document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+const slideSpeed = 800; // milliseconds
+
+setInterval(() => {
+
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+
+}, slideSpeed);
+
+</script>
+
+</body>
+</html>
