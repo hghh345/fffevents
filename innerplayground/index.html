@@ -110,6 +110,29 @@ h2{
     }
 
 }
+.playground-header{
+    width:100%;
+    height:250px;
+    border:8px solid #000;
+    border-bottom:none;
+    border-radius:50% 50% 0 0;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom:25px;
+    position:relative;
+    margin-bottom:25px;
+}
+
+.playground-header-text{
+    font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
+    font-size:4.5rem;
+    font-weight:700;
+    line-height:.82;
+    letter-spacing:-3px;
+    text-align:center;
+    text-transform:lowercase;
+}
 
 /* HERO */
 
@@ -394,14 +417,16 @@ hr{
 
     <section class="hero">
 
-        <h1>
-            inner<br>
-            playground
-        </h1>
+      <div class="playground-header">
+    <div class="playground-header-text">
+        inner<br>
+        playground
+    </div>
+</div>
 
-        <p class="subtitle">
-            small prompts. big adventures.
-        </p>
+<p class="subtitle">
+    small prompts. big adventures.
+</p>
 
         <p>
             A little card game for curious adults.
