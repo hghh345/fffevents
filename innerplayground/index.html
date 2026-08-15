@@ -70,6 +70,46 @@ h2{
     text-decoration:underline;
 }
 
+.playground-border{
+    position:fixed;
+    inset:0;
+    border:10px solid #ff4fa3;
+    pointer-events:none;
+    z-index:9999;
+    animation:playgroundColors 12s infinite;
+}
+
+@keyframes playgroundColors{
+
+    0%{
+        border-color:#ff4fa3;
+    }
+
+    16%{
+        border-color:#ffd84d;
+    }
+
+    33%{
+        border-color:#6ee56e;
+    }
+
+    50%{
+        border-color:#5bd6ff;
+    }
+
+    66%{
+        border-color:#b78cff;
+    }
+
+    83%{
+        border-color:#ff914d;
+    }
+
+    100%{
+        border-color:#ff4fa3;
+    }
+
+}
 
 /* HERO */
 
@@ -342,6 +382,7 @@ hr{
 
 <body>
 
+<div class="playground-border"></div>
 <div class="container">
 
     <a href="https://funfunfun.events" class="back-button">
@@ -662,7 +703,7 @@ hr{
         <br>
 
         <p>
-           we could all use more ways to connect — with each other and with ourselves.
+           we could all use more ways to connect, with each other and with ourselves.
         </p>
 
         <br>
