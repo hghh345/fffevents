@@ -109,29 +109,24 @@ h2{
         border-color:#ff4fa3;
     }
 
-}
-.playground-header{
+.curved-title{
     width:100%;
-    height:250px;
-    border:8px solid #000;
-    border-bottom:none;
-    border-radius:50% 50% 0 0;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    padding-bottom:25px;
-    position:relative;
-    margin-bottom:25px;
+    margin-bottom:10px;
 }
 
-.playground-header-text{
+.curved-title svg{
+    width:100%;
+    height:auto;
+    display:block;
+    overflow:visible;
+}
+
+.curved-title-text{
     font-family:"Arial MT Pro", "Arial Narrow", Arial, Helvetica, sans-serif;
-    font-size:4.5rem;
+    font-size:68px;
     font-weight:700;
-    line-height:.82;
-    letter-spacing:-3px;
-    text-align:center;
-    text-transform:lowercase;
+    letter-spacing:-2px;
+    fill:#000;
 }
 
 /* HERO */
@@ -417,11 +412,35 @@ hr{
 
     <section class="hero">
 
-      <div class="playground-header">
-    <div class="playground-header-text">
-        inner<br>
-        playground
-    </div>
+ <div class="curved-title">
+
+    <svg
+        viewBox="0 0 700 300"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="inner playground"
+    >
+
+        <defs>
+            <path
+                id="title-curve"
+                d="M 90 220 Q 350 30 610 220"
+            />
+        </defs>
+
+        <text
+            class="curved-title-text"
+        >
+            <textPath
+                href="#title-curve"
+                startOffset="50%"
+                text-anchor="middle"
+            >
+                inner playground
+            </textPath>
+        </text>
+
+    </svg>
+
 </div>
 
 <p class="subtitle">
