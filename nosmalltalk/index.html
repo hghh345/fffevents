@@ -338,51 +338,67 @@ This event is for adults.
 </p>
 
 <hr>
-<!-- NO SMALL TALK PHOTO SLIDESHOW -->
-<div class="nst-photo-marquee">
-  <div class="nst-photo-track">
+<!-- PHOTOS FROM THE LAST NO SMALL TALK -->
+<div class="nst-photo-section">
 
-    <img src="photo1.JPG" alt="No Small Talk">
-    <img src="photo2.JPG" alt="No Small Talk">
-    <img src="photo3.JPG" alt="No Small Talk">
-    <img src="photo4.JPG" alt="No Small Talk">
-    <img src="photo5.JPG" alt="No Small Talk">
-    <img src="photo6.JPG" alt="No Small Talk">
-    <img src="photo7.JPG" alt="No Small Talk">
-    <img src="photo8.JPG" alt="No Small Talk">
-    <img src="photo9.JPG" alt="No Small Talk">
-    <img src="photo10.JPG" alt="No Small Talk">
-    <img src="photo11.JPG" alt="No Small Talk">
-    <img src="photo12.JPG" alt="No Small Talk">
-    <img src="photo13.JPG" alt="No Small Talk">
-     <img src="photo14.JPG" alt="No Small Talk">
+  <p class="nst-photo-caption">photos from our last no small talk ↓</p>
 
-    <!-- duplicate set for seamless loop -->
-    <img src="photo1.JPG" alt="">
-    <img src="photo2.JPG" alt="">
-    <img src="photo3.JPG" alt="">
-    <img src="photo4.JPG" alt="">
-    <img src="photo5.JPG" alt="">
-    <img src="photo6.JPG" alt="">
-    <img src="photo7.JPG" alt="">
-    <img src="photo8.JPG" alt="">
-    <img src="photo9.JPG" alt="">
-    <img src="photo10.JPG" alt="">
-    <img src="photo11.JPG" alt="">
-    <img src="photo12.JPG" alt="">
-    <img src="photo13.JPG" alt="">
-    <img src="photo14.JPG" alt="">
+  <div class="nst-photo-marquee">
+    <div class="nst-photo-track">
 
+      <img src="photo1.JPG" alt="No Small Talk">
+      <img src="photo2.JPG" alt="No Small Talk">
+      <img src="photo3.JPG" alt="No Small Talk">
+      <img src="photo4.JPG" alt="No Small Talk">
+      <img src="photo5.JPG" alt="No Small Talk">
+      <img src="photo6.JPG" alt="No Small Talk">
+      <img src="photo7.JPG" alt="No Small Talk">
+      <img src="photo8.JPG" alt="No Small Talk">
+      <img src="photo9.JPG" alt="No Small Talk">
+      <img src="photo10.JPG" alt="No Small Talk">
+      <img src="photo11.JPG" alt="No Small Talk">
+      <img src="photo12.JPG" alt="No Small Talk">
+      <img src="photo13.JPG" alt="No Small Talk">
+
+      <!-- duplicate set for seamless loop -->
+      <img src="photo1.JPG" alt="">
+      <img src="photo2.JPG" alt="">
+      <img src="photo3.JPG" alt="">
+      <img src="photo4.JPG" alt="">
+      <img src="photo5.JPG" alt="">
+      <img src="photo6.JPG" alt="">
+      <img src="photo7.JPG" alt="">
+      <img src="photo8.JPG" alt="">
+      <img src="photo9.JPG" alt="">
+      <img src="photo10.JPG" alt="">
+      <img src="photo11.JPG" alt="">
+      <img src="photo12.JPG" alt="">
+      <img src="photo13.JPG" alt="">
+
+    </div>
   </div>
+
 </div>
 
+<!-- DIVIDER -->
+<div class="nst-divider"></div>
+
 <style>
+  .nst-photo-section {
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .nst-photo-caption {
+    font-size: 14px;
+    margin: 0 0 18px;
+    letter-spacing: 0.02em;
+  }
+
   .nst-photo-marquee {
     width: 100vw;
     overflow: hidden;
     margin-left: calc(50% - 50vw);
-    margin-top: 80px;
-    margin-bottom: 0;
   }
 
   .nst-photo-track {
@@ -400,16 +416,28 @@ This event is for adults.
     flex-shrink: 0;
   }
 
+  .nst-divider {
+    width: 100%;
+    border-top: 1px solid currentColor;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
   @keyframes nst-scroll {
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(calc(-50% - 6px));
     }
   }
 
   @media (max-width: 600px) {
+    .nst-photo-section {
+      margin-top: 60px;
+    }
+
     .nst-photo-track {
       gap: 8px;
       animation-duration: 22s;
@@ -418,6 +446,11 @@ This event is for adults.
     .nst-photo-track img {
       width: 130px;
       height: 130px;
+    }
+
+    .nst-divider {
+      margin-top: 60px;
+      margin-bottom: 60px;
     }
   }
 </style>
