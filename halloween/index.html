@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,45 +41,39 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
 .object:hover,.object:focus-visible{filter:drop-shadow(0 8px 5px rgba(0,0,0,.25));scale:1.08;outline:none}
 .object span{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.1}
 .object small{font-size:1.05rem;background:#fff8dc;padding:2px 8px;border:1px solid #352b29;border-radius:4px;white-space:nowrap}
-/* FLOATING GHOSTS */
-#rules {
-  position: absolute;
-  top: 50px;
-  left: -200px;
-  font-size: 90px;
-  animation: ghostOne 35s linear infinite;
-  z-index: 10;
-  cursor: pointer;
+/* GHOSTS THAT GLIDE ACROSS THE SCREEN */
+#ghost{
+  position:fixed;
+  top:50px;
+  left:-200px;
+  animation:ghostOne 35s linear infinite;
+  z-index:30;
+}
+#ghost span{font-size:clamp(4rem,8vw,7rem);filter:drop-shadow(0 4px 0 rgba(255,255,255,.35))}
+#ghost small{transform:rotate(-5deg)}
+
+#ghost2{
+  position:fixed;
+  top:120px;
+  left:-400px;
+  font-size:70px;
+  line-height:1;
+  animation:ghostTwo 55s linear infinite;
+  z-index:10;
+  pointer-events:none;
+  filter:drop-shadow(0 4px 0 rgba(255,255,255,.25));
+}
+#ghost2 span{font-size:clamp(3.5rem,6vw,5rem)}
+
+@keyframes ghostOne{
+  from{left:-200px}
+  to{left:110%}
+}
+@keyframes ghostTwo{
+  from{left:-400px}
+  to{left:110%}
 }
 
-#ghost2 {
-  position: absolute;
-  top: 120px;
-  left: -400px;
-  font-size: 70px;
-  animation: ghostTwo 55s linear infinite;
-  z-index: 10;
-  pointer-events: none;
-}
-
-@keyframes ghostOne {
-  from {
-    left: -200px;
-  }
-  to {
-    left: 110%;
-  }
-}
-
-@keyframes ghostTwo {
-  from {
-    left: -400px;
-  }
-  to {
-    left: 110%;
-  }
-}
-#ghost{top:8%;left:12%;animation:ghostFloat 5.5s ease-in-out infinite}
 #ghost span{font-size:clamp(4rem,8vw,7rem);filter:drop-shadow(0 4px 0 rgba(255,255,255,.35))}
 #ghost small{transform:rotate(-5deg)}
 #rules{left:7%;bottom:25%}
@@ -93,7 +88,7 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
 #apple{left:29%;bottom:8%;animation-delay:-2.2s}
 #confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:998}
 @keyframes float{50%{translate:0 -12px}}
-@keyframes ghostFloat{0%,100%{translate:0 0;rotate:-5deg}50%{translate:12px -24px;rotate:5deg}}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 #popup{position:fixed;inset:0;display:none;justify-content:center;align-items:center;background:rgba(12,7,18,.58);z-index:999;padding:16px}
 #card{
@@ -114,8 +109,9 @@ button:hover{background:#ffcc35}
   #paper p{font-size:1.05rem}
   .object span{font-size:2.7rem}
   .object small{font-size:.85rem;padding:2px 5px}
-  #ghost{top:4%;left:5%}
+  #ghost{top:4%;left:-200px}
   #ghost span{font-size:4.4rem}
+  #ghost2{top:120px}
   #rules{left:3%;bottom:19%}
   #story{left:4%;top:27%}
   #sun{right:4%;top:3%}
@@ -147,6 +143,7 @@ button:hover{background:#ffcc35}
 </div>
 
 <div class="object" id="ghost" role="button" tabindex="0" aria-label="Meet your ghost guide"><span>👻</span><small>boo!</small></div>
+<div id="ghost2" aria-hidden="true"><span>👻</span></div>
 <div class="object" id="rules" role="button" tabindex="0"><span>🕸️</span><small>The Rules</small></div>
 <div class="object" id="story" role="button" tabindex="0"><span>🎃</span><small>Why?</small></div>
 <div class="object" id="sun" role="button" tabindex="0" aria-label="Halloween forecast"><span>🌙</span></div>
