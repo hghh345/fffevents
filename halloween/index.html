@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +98,14 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
 #card h3{font-family:'Schoolbell',cursive;font-size:clamp(1.8rem,5vw,2.3rem);margin-bottom:18px}
 #card p{font-size:clamp(1.12rem,3vw,1.35rem);line-height:1.4;white-space:pre-line}
 #card a{color:#5c2b7a;font-weight:bold}
+#photoGallery{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+.photo-slot{aspect-ratio:1/1;overflow:hidden;border:2px solid #302a26;background:#fff0d9;box-shadow:2px 3px 0 rgba(0,0,0,.12);transform:rotate(-1deg);position:relative}
+.photo-slot:nth-child(3n){transform:rotate(1.5deg)}
+.photo-slot:nth-child(4n){transform:rotate(2deg)}
+.photo-slot img{display:block;width:100%;height:100%;object-fit:cover}
+.photo-slot.empty{display:flex;align-items:center;justify-content:center;padding:8px;text-align:center;font-size:1rem;color:#765d4c}
+.photo-slot.empty:after{content:attr(data-placeholder)}
+@media(max-width:520px){#photoGallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.photo-slot.empty{font-size:.9rem}}
 button{margin-top:24px;padding:12px 25px;font:inherit;font-size:1.15rem;border:2px solid #302a26;border-radius:999px;cursor:pointer;background:#ffd95c}
 button:hover{background:#ffcc35}
 
@@ -146,7 +156,7 @@ button:hover{background:#ffcc35}
 <div class="object" id="story" role="button" tabindex="0"><span>🎃</span><small>Why?</small></div>
 <div class="object" id="sun" role="button" tabindex="0" aria-label="Halloween forecast"><span>🌙</span></div>
 <div class="object" id="candy" role="button" tabindex="0"><span>🍬</span><small>Trick or Treat</small></div>
-<div class="object" id="map" role="button" tabindex="0"><span>🗺️</span><small>The Trail</small></div>
+<div class="object" id="map" role="button" tabindex="0" aria-label="See photos from the last scavenger hunt"><span>📸</span><small>Proof of Fun</small></div>
 <div class="object" id="what" role="button" tabindex="0"><span>🔎</span><small>How it Works</small></div>
 <div class="object" id="who" role="button" tabindex="0"><span>🧙</span><small>Who's Invited?</small></div>
 <div class="object" id="pack" role="button" tabindex="0"><span>👜</span><small>What to Bring</small></div>
@@ -157,6 +167,7 @@ button:hover{background:#ffcc35}
   <div id="card">
     <h3 id="cardTitle"></h3>
     <p id="cardText"></p>
+    <div id="photoGallery" aria-label="Photos from the last scavenger hunt"></div>
     <button id="closePopup" type="button">Got it! ✨</button>
   </div>
 </div>
@@ -184,8 +195,8 @@ const content = {
     text: "We're taking trick-or-treating out into the city. At each stop, there'll be a clue, a treat, or a tiny surprise waiting for you. Collect your goodies as you go and see what you discover along the way. Costumes encouraged. Candy enthusiasm required."
   },
   map: {
-    title: "🗺️ The Trail",
-    text: "We'll travel between a handful of stops around Lisbon, following clues and collecting treats along the way. This isn't a race, and there's no prize for finishing first. The point is to explore, meet people, get a little lost in the fun, and enjoy the journey. Exact meeting point and route details will be shared with ticket holders."
+    title: "📸 Proof of Fun",
+    text: "A little look back at the last scavenger hunt — good people, silly adventures, and proof that grown-ups can still play. Add your 12 photos to the photos folder to fill this little scrapbook!"
   },
   what: {
     title: "🔎 How it Works",
@@ -212,12 +223,43 @@ const content = {
 function openCard(key){
   const item = content[key];
   if(!item) return;
+  const cardText = document.getElementById("cardText");
+  const photoGallery = document.getElementById("photoGallery");
   document.getElementById("cardTitle").textContent = item.title;
-  document.getElementById("cardText").textContent = item.text;
+  cardText.textContent = item.text;
+  photoGallery.style.display = key === "map" ? "grid" : "none";
+  cardText.style.display = key === "map" ? "none" : "block";
+  if(key === "map" && !photoGallery.dataset.built){
+    for(let i=1;i<=12;i++){
+      const number = String(i).padStart(2,"0");
+      const slot = document.createElement("div");
+      slot.className = "photo-slot empty";
+      slot.dataset.placeholder = "Add photo " + number;
+      const img = document.createElement("img");
+      img.src = "photos/scavenger-hunt-" + number + ".jpg";
+      img.alt = "Photo " + i + " from the last scavenger hunt";
+      img.onerror = function(){
+        this.style.display = "none";
+        slot.classList.add("empty");
+        slot.dataset.placeholder = "Add photo " + number;
+      };
+      img.onload = function(){
+        slot.classList.remove("empty");
+        slot.dataset.placeholder = "";
+      };
+      slot.appendChild(img);
+      photoGallery.appendChild(slot);
+    }
+    photoGallery.dataset.built = "true";
+  }
   document.getElementById("popup").style.display = "flex";
   document.getElementById("closePopup").focus();
 }
-function closeCard(){ document.getElementById("popup").style.display = "none"; }
+function closeCard(){
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("photoGallery").style.display = "none";
+  document.getElementById("cardText").style.display = "block";
+}
 
 Object.keys(content).forEach(key=>{
   const el = document.getElementById(key);
