@@ -19,7 +19,7 @@ body{
 #paper{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);
   width:min(465px,88vw);max-height:88vh;overflow:auto;
-  background:#f3e37d;padding:clamp(24px,5vw,48px);
+  background:#FFDBBB;padding:clamp(24px,5vw,48px);
   border-radius:8px;box-shadow:0 25px 50px rgba(0,0,0,.28);z-index:50;text-align:center;
 }
 #paper:before{
@@ -40,6 +40,44 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
 .object:hover,.object:focus-visible{filter:drop-shadow(0 8px 5px rgba(0,0,0,.25));scale:1.08;outline:none}
 .object span{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.1}
 .object small{font-size:1.05rem;background:#fff8dc;padding:2px 8px;border:1px solid #352b29;border-radius:4px;white-space:nowrap}
+/* FLOATING GHOSTS */
+#rules {
+  position: absolute;
+  top: 50px;
+  left: -200px;
+  font-size: 90px;
+  animation: ghostOne 35s linear infinite;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#ghost2 {
+  position: absolute;
+  top: 120px;
+  left: -400px;
+  font-size: 70px;
+  animation: ghostTwo 55s linear infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes ghostOne {
+  from {
+    left: -200px;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+@keyframes ghostTwo {
+  from {
+    left: -400px;
+  }
+  to {
+    left: 110%;
+  }
+}
 #ghost{top:8%;left:12%;animation:ghostFloat 5.5s ease-in-out infinite}
 #ghost span{font-size:clamp(4rem,8vw,7rem);filter:drop-shadow(0 4px 0 rgba(255,255,255,.35))}
 #ghost small{transform:rotate(-5deg)}
@@ -67,6 +105,7 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
 #card a{color:#5c2b7a;font-weight:bold}
 button{margin-top:24px;padding:12px 25px;font:inherit;font-size:1.15rem;border:2px solid #302a26;border-radius:999px;cursor:pointer;background:#ffd95c}
 button:hover{background:#ffcc35}
+
 @media(max-width:700px){
   body{overflow:auto;background-attachment:scroll}
   #paper{top:46%;width:min(370px,82vw);padding:25px 22px}
@@ -96,8 +135,7 @@ button:hover{background:#ffcc35}
 </head>
 <body>
 
-<!-- The page uses your own background image. Save it beside this HTML as
-     halloween-background.jpg, or change the filename in the body CSS above. -->
+
 
 <div id="paper">
   <h1>The Super<br>FunFunFun<br>Scavenger Hunt</h1>
