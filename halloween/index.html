@@ -104,7 +104,41 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
   font-weight: normal;
   font-size: 0.9rem;
 }
+.site-links {
+  position: fixed;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
 
+.site-links a {
+  pointer-events: auto;
+  color: #30251e;
+  background: #fffdf4;
+  border: 2px solid #30251e;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 #30251e;
+}
+
+.site-links a:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .site-links a {
+    font-size: 0.75rem;
+    padding: 7px 8px;
+  }
+}
 #ghost span{font-size:clamp(4rem,8vw,7rem);filter:drop-shadow(0 4px 0 rgba(255,255,255,.35))}
 #ghost small{transform:rotate(-5deg)}
 #rules{left:7%;bottom:18%}
