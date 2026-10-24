@@ -278,6 +278,7 @@ function openCard(key){
   const photoGallery = document.getElementById("photoGallery");
   document.getElementById("cardTitle").textContent = item.title;
   cardText.textContent = item.text;
+  ticketOptions.style.display = key === "ghost" ? "grid" : "none";
   photoGallery.style.display = key === "map" ? "grid" : "none";
 cardText.style.display = "block";
   if(key === "map" && !photoGallery.dataset.built){
