@@ -73,6 +73,35 @@ h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:400;line-height:1.1;margin-bo
   from{left:-400px}
   to{left:110%}
 }
+#ticketOptions {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.ticket-button {
+  display: block;
+  padding: 16px;
+  background: #fff0c9;
+  border: 2px solid #30251e;
+  border-radius: 8px;
+  color: #30251e;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 3px 3px 0 #30251e;
+}
+
+.ticket-button:hover {
+  transform: translateY(-2px);
+}
+
+.ticket-button small {
+  display: block;
+  margin-top: 6px;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
 
 #ghost span{font-size:clamp(4rem,8vw,7rem);filter:drop-shadow(0 4px 0 rgba(255,255,255,.35))}
 #ghost small{transform:rotate(-5deg)}
@@ -182,6 +211,23 @@ button:hover{background:#ffcc35}
     <button id="closePopup" type="button">Keep Exploring 👻</button>
   </div>
 </div>
+<div id="ticketOptions" style="display:none;">
+  <a class="ticket-button"
+     href="https://www.paypal.com/ncp/payment/6498J5PGGJY2Q"
+     target="_blank"
+     rel="noopener noreferrer">
+    🎃 ONE LITTLE SPOOK — €25
+    <small>1 person · Full Halloween experience</small>
+  </a>
+
+  <a class="ticket-button"
+     href="https://www.paypal.com/ncp/payment/BV6EUP9VKCSYE"
+     target="_blank"
+     rel="noopener noreferrer">
+    👯 DOUBLE TROUBLE — €45
+    <small>2 people · Save €5</small>
+  </a>
+</div>
 
 <script>
 const content = {
@@ -227,6 +273,7 @@ const content = {
 function openCard(key){
   const item = content[key];
   if(!item) return;
+  const ticketOptions = document.getElementById("ticketOptions");
   const cardText = document.getElementById("cardText");
   const photoGallery = document.getElementById("photoGallery");
   document.getElementById("cardTitle").textContent = item.title;
@@ -263,6 +310,7 @@ function closeCard(){
   document.getElementById("photoGallery").style.display = "none";
   document.getElementById("cardText").style.display = "block";
 }
+
 
 Object.keys(content).forEach(key=>{
   const el = document.getElementById(key);
