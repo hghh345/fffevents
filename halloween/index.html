@@ -204,12 +204,31 @@ button:hover{background:#ffcc35}
 <div class="object" id="pack" role="button" tabindex="0"><span>🎒</span><small>What to Bring</small></div>
 
 <div id="popup" role="dialog" aria-modal="true" aria-labelledby="cardTitle">
-  <div id="card">
-    <h3 id="cardTitle"></h3>
-    <p id="cardText"></p>
-    <div id="photoGallery" aria-label="Photos from the last scavenger hunt"></div>
-    <button id="closePopup" type="button">Keep Exploring 👻</button>
+ <div id="card">
+  <h3 id="cardTitle"></h3>
+  <p id="cardText"></p>
+
+  <div id="ticketOptions" style="display:none;">
+    <a class="ticket-button"
+       href="https://www.paypal.com/ncp/payment/6498J5PGGJY2Q"
+       target="_blank"
+       rel="noopener noreferrer">
+      🎃 ONE LITTLE SPOOK — €25
+      <small>1 person · Full Halloween experience</small>
+    </a>
+
+    <a class="ticket-button"
+       href="https://www.paypal.com/ncp/payment/BV6EUP9VKCSYE"
+       target="_blank"
+       rel="noopener noreferrer">
+      👯 DOUBLE TROUBLE — €45
+      <small>2 people · Save €5</small>
+    </a>
   </div>
+
+  <div id="photoGallery" aria-label="Photos from the last scavenger hunt"></div>
+  <button id="closePopup" type="button">Keep Exploring 👻</button>
+</div>
 </div>
 <div id="ticketOptions" style="display:none;">
   <a class="ticket-button"
